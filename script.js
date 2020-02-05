@@ -36,26 +36,26 @@ setInputFilter(input, positiveIntNumOnlyTest);
 
 const sayStr = document.querySelector("#sayStr");
 
-let resultStr, left, write;
-
 function say(num){
-    resultStr = '';
-    if (num === 0){resultStr = "Zero.";}
+    if (num === 0){return ["Zero."];}
 
-    onesPlace = ['one','two','three','four','five','six','seven','eight','nine'];
-    tensPlace = ['ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-    teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+    let resultArr = [];
 
-    left = num; //what we still have left to write out
-    write = left / 1000000000000; //how many trillions left to write out
+    let onesPlace = ['one','two','three','four','five','six','seven','eight','nine'];
+    let tensPlace = ['ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+    let teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+
+    let left = num; //what we still have left to write out
+    let write = left / 1000000000000; //how many trillions left to write out
     left = left - write*1000000000000; //subtract those trillions
 
     if (write > 0){
-        trillions = say(write);
-        resultStr = resultStr + trillions + " trillion";
+        let trillions = say(write);
+        resultArr = resultArr.concat(trillions);
+        resultArr.push(" trillion");
     
         if (left > 0){
-            resultStr = resultStr + " "; //so we don't write 'two trilliontwo billion'
+            resultArr.push(" "); //so we don't write 'two trilliontwo billion'
         }
     }
 
@@ -63,11 +63,12 @@ function say(num){
     left = left - write*1000000000; //subtract those billions
 
     if (write > 0){
-        billions = say(write);
-        resultStr = resultStr + billions + " billion";
+        let billions = say(write);
+        resultArr = resultArr.concat(billions);
+        resultArr.push(" billions");
     
         if (left > 0){
-            resultStr = resultStr + " "; //so we don't write 'two billiontwo million'
+            resultArr.push(" "); //so we don't write 'two billiontwo million'
         }
     }
     
@@ -75,11 +76,12 @@ function say(num){
     left = left - write*1000000; //subtract those millions
 
     if (write > 0){
-        millions = say(write);
-        resultStr = resultStr + millions + " million";
+        let millions = say(write);
+        resultArr = resultArr.concat(millions);
+        resultArr.push(" million");
 
         if (left > 0){
-            resultStr = resultStr + " "; //so we don't write 'two milliontwo thousand'
+            resultArr.push(" "); //so we don't write 'two milliontwo thousand'
         }
     }
     
@@ -87,11 +89,12 @@ function say(num){
     left = left - write*1000; //subtract those thousands
 
     if (write > 0){
-        thousands = say(write);
-        resultStr = resultStr + thousands + " thousand";
+        let thousands = say(write);
+        resultArr = resultArr.concat(thousands);
+        resultArr.push(" thousand");
 
         if (left > 0){
-            resultStr = resultStr + " "; //so we don't write 'two thousandtwo hundred'
+            resultArr.push(" "); //so we don't write 'two thousandtwo hundred'
         }
     }
 
@@ -99,11 +102,12 @@ function say(num){
     left = left - write*100; //subtract those hundreds
 
     if (write > 0){
-        hundreds = say(write);
-        resultStr = resultStr + hundreds + " hundred";
+        let hundreds = say(write);
+        resultArr = resultArr.concat(hundreds);
+        resultArr.push(" hundred");
         
         if (left > 0){
-            resultStr = resultStr + " and "; //so we don't write 'two hundredfifty-one'
+            resultArr.push(" and "); //so we don't write 'two hundredfifty-one'
         }
     }
 
@@ -113,15 +117,15 @@ function say(num){
     if (write > 0){
         if ((write == 1) && (left > 0)){
             //special exceptions for teens
-            resultStr = resultStr + teens[left-1];
+            resultArr.push(teens[left-1]);
             left = 0;
         }
         else{
-            resultStr = resultStr + tensPlace[write-1];
+            resultArr.push(tensPlace[write-1]);
         }
 
         if (left > 0){
-            resultStr = resultStr + "-"; //so we don't write 'sixtyfour'
+            resultArr.push("-"); //so we don't write 'sixtyfour'
         }
     }
 
@@ -129,11 +133,11 @@ function say(num){
     left = 0; //subtract those ones
 
     if (write > 0){
-        resultStr = resultStr + onesPlace[write-1];
+        resultArr.push(onesPlace[write-1]);
     }
 
-    sayStr.textContent = resultStr;
-    return resultStr;
+    sayStr.textContent = resultArr.join("");
+    return resultArr;
 }
 
 //event listener for submitBtn
