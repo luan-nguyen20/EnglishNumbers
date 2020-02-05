@@ -36,26 +36,24 @@ setInputFilter(input, positiveIntNumOnlyTest);
 
 const sayStr = document.querySelector("#sayStr");
 
-var resultStr, onesPlace, tensPlace, teens, trillions, billions, thousands, hundreds, left, write;
-
 function say(num){
     if(num === 0) {
         sayStr.textContent = "Zero.";
         return ['Zero.'];
     }
 
-    resultStr = ''; //to be returned
+    let resultStr = ''; //to be returned
 
-    onesPlace = ['one','two','three','four','five','six','seven','eight','nine'];
-    tensPlace = ['ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-    teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seveteen','eighteen','nineteen'];
+    let onesPlace = ['one','two','three','four','five','six','seven','eight','nine'];
+    let tensPlace = ['ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+    let teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seveteen','eighteen','nineteen'];
     
-    left = num;
-    write = left / 1000000000000;
+    let left = num;
+    let write = Math.floor(left / 1000000000000);
     left = left - write*1000000000000;
 
     if(write>0){
-        trillions = say(write);
+        let trillions = say(write);
         resultStr = resultStr + trillions + " trillion";
 
         if(left>0){
@@ -63,11 +61,11 @@ function say(num){
         }
     }
 
-    write = left / 1000000000;
+    write = Math.floor(left / 1000000000);
     left = left - write*1000000000;
 
     if(write>0){
-        billions = say(write);
+        let billions = say(write);
         resultStr = resultStr + billions + " billion";
 
         if(left>0){
@@ -75,11 +73,11 @@ function say(num){
         }
     }
 
-    write = left / 1000000;
+    write = Math.floor(left / 1000000);
     left = left - write*1000000;
 
     if(write>0){
-        millions = say(write);
+        let millions = say(write);
         resultStr = resultStr + millions + " million";
 
         if(left>0){
@@ -87,11 +85,11 @@ function say(num){
         }
     }
 
-    write = left / 1000;
+    write = Math.floor(left / 1000);
     left = left - write*1000;
 
     if(write>0){
-        thousands = say(write);
+        let thousands = say(write);
         resultStr = resultStr + thousands + " thousand";
 
         if(left>0){
@@ -99,11 +97,11 @@ function say(num){
         }
     }
 
-    write = left / 100;
+    write = Math.floor(left / 100);
     left = left - write*100;
 
     if(write>0){
-        hundreds = say(write);
+        let hundreds = say(write);
         resultStr = resultStr + hundreds + " hundred";
 
         if(left>0){
@@ -111,7 +109,7 @@ function say(num){
         }
     }
 
-    write = left/10;
+    write = Math.floor(left/10);
     left = left - write*10;
 
     if(write>0){
@@ -128,7 +126,7 @@ function say(num){
         }
     }
 
-    write = left;
+    write = Math.floor(left);
     left = 0;
     
     if(write>0){
