@@ -36,108 +36,107 @@ setInputFilter(input, positiveIntNumOnlyTest);
 
 const sayStr = document.querySelector("#sayStr");
 
+var resultStr, onesPlace, tensPlace, teens, trillions, billions, thousands, hundreds, left, write;
+
 function say(num){
-    if (num === 0){return ["Zero."];}
+    if(num === 0) {
+        sayStr.textContent = "Zero.";
+        return ['Zero.'];
+    }
 
-    let resultArr = [];
+    resultStr = ''; //to be returned
 
-    let onesPlace = ['one','two','three','four','five','six','seven','eight','nine'];
-    let tensPlace = ['ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-    let teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
-
-    let left = num; //what we still have left to write out
-    let write = left / 1000000000000; //how many trillions left to write out
-    left = left - write*1000000000000; //subtract those trillions
-
-    if (write > 0){
-        let trillions = say(write);
-        resultArr = resultArr.concat(trillions);
-        resultArr.push(" trillion");
+    onesPlace = ['one','two','three','four','five','six','seven','eight','nine'];
+    tensPlace = ['ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+    teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seveteen','eighteen','nineteen'];
     
-        if (left > 0){
-            resultArr.push(" "); //so we don't write 'two trilliontwo billion'
+    left = num;
+    write = left / 1000000000000;
+    left = left - write*1000000000000;
+
+    if(write>0){
+        trillions = say(write);
+        resultStr = resultStr + trillions + " trillion";
+
+        if(left>0){
+            resultStr = resultStr + " ";
         }
     }
 
-    write = left / 1000000000; //how many billions left to write out
-    left = left - write*1000000000; //subtract those billions
+    write = left / 1000000000;
+    left = left - write*1000000000;
 
-    if (write > 0){
-        let billions = say(write);
-        resultArr = resultArr.concat(billions);
-        resultArr.push(" billions");
-    
-        if (left > 0){
-            resultArr.push(" "); //so we don't write 'two billiontwo million'
-        }
-    }
-    
-    write = left / 1000000; //how many millions left to write out
-    left = left - write*1000000; //subtract those millions
+    if(write>0){
+        billions = say(write);
+        resultStr = resultStr + billions + " billion";
 
-    if (write > 0){
-        let millions = say(write);
-        resultArr = resultArr.concat(millions);
-        resultArr.push(" million");
-
-        if (left > 0){
-            resultArr.push(" "); //so we don't write 'two milliontwo thousand'
-        }
-    }
-    
-    write = left / 1000; //how many thousands left to write out
-    left = left - write*1000; //subtract those thousands
-
-    if (write > 0){
-        let thousands = say(write);
-        resultArr = resultArr.concat(thousands);
-        resultArr.push(" thousand");
-
-        if (left > 0){
-            resultArr.push(" "); //so we don't write 'two thousandtwo hundred'
+        if(left>0){
+            resultStr = resultStr + " ";
         }
     }
 
-    write = left/100; //how many hundreds left to write out
-    left = left - write*100; //subtract those hundreds
+    write = left / 1000000;
+    left = left - write*1000000;
 
-    if (write > 0){
-        let hundreds = say(write);
-        resultArr = resultArr.concat(hundreds);
-        resultArr.push(" hundred");
-        
-        if (left > 0){
-            resultArr.push(" and "); //so we don't write 'two hundredfifty-one'
+    if(write>0){
+        millions = say(write);
+        resultStr = resultStr + millions + " million";
+
+        if(left>0){
+            resultStr = resultStr + " ";
         }
     }
 
-    write = left/10; //how many tens left to write out
-    left  = left - write*10;  // Subtract off those tens.
+    write = left / 1000;
+    left = left - write*1000;
 
-    if (write > 0){
-        if ((write == 1) && (left > 0)){
-            //special exceptions for teens
-            resultArr.push(teens[left-1]);
+    if(write>0){
+        thousands = say(write);
+        resultStr = resultStr + thousands + " thousand";
+
+        if(left>0){
+            resultStr = resultStr + " ";
+        }
+    }
+
+    write = left / 100;
+    left = left - write*100;
+
+    if(write>0){
+        hundreds = say(write);
+        resultStr = resultStr + hundreds + " hundred";
+
+        if(left>0){
+            resultStr = resultStr + " and ";
+        }
+    }
+
+    write = left/10;
+    left = left - write*10;
+
+    if(write>0){
+        if(write===1 && left>0){
+            resultStr = resultStr + teens[left-1];
             left = 0;
         }
         else{
-            resultArr.push(tensPlace[write-1]);
+            resultStr = resultStr + tensPlace[write-1];
         }
 
-        if (left > 0){
-            resultArr.push("-"); //so we don't write 'sixtyfour'
+        if(left>0){
+            resultStr = resultStr + "-";
         }
     }
 
-    write = left; //hows many ones left to write out
-    left = 0; //subtract those ones
-
-    if (write > 0){
-        resultArr.push(onesPlace[write-1]);
+    write = left;
+    left = 0;
+    
+    if(write>0){
+        resultStr = resultStr + onesPlace[write-1];
     }
 
-    sayStr.textContent = resultArr.join("");
-    return resultArr;
+    sayStr.textContent = resultStr;
+    return resultStr;
 }
 
 //event listener for submitBtn
@@ -145,4 +144,5 @@ const submitBtn = document.querySelector("#submitBtn")
 submitBtn.addEventListener('click',function() {
     say(Number(input.value));
 });
+
 
