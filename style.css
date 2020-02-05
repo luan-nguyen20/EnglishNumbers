@@ -7,7 +7,8 @@ html{
 
 .container{
     display: grid;
-    height: 400px;
+    width:100vw;
+    height: 100vh;
     padding: 5px 5px; /*outer gap*/
     grid-template-columns: repeat(4,1fr); /*4 cols of equal width*/
     grid-template-rows: repeat(10, 1fr); /*10 equal rows/
@@ -37,7 +38,7 @@ header{
     border-radius: 11px;
     background-color: #6deea1;
     color: rgb(0, 0, 0);
-    text-align: right;
+    text-align: center;
    
     grid-row-start: 2;
     grid-row-end: 3;
@@ -71,8 +72,4 @@ header{
 
 footer{
     text-align: right;
-    grid-row-start: 9;
-    grid-row-end: 10;
-    grid-column-start: 3;
-    grid-column-end: 5;
 }
