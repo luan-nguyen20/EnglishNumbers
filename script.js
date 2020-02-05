@@ -60,7 +60,7 @@ function say(num){
         resultStr = resultStr + trillions + " trillion";
 
         if(left>0){
-            resultStr = resultStr + " ";
+            resultStr = resultStr + " and ";
         }
     }
 
@@ -74,7 +74,7 @@ function say(num){
         resultStr = resultStr + billions + " billion";
 
         if(left>0){
-            resultStr = resultStr + " ";
+            resultStr = resultStr + " and ";
         }
     }
 
@@ -88,7 +88,7 @@ function say(num){
         resultStr = resultStr + millions + " million";
 
         if(left>0){
-            resultStr = resultStr + " ";
+            resultStr = resultStr + " and ";
         }
     }
 
@@ -102,7 +102,7 @@ function say(num){
         resultStr = resultStr + thousands + " thousand";
 
         if(left>0){
-            resultStr = resultStr + " ";
+            resultStr = resultStr + " and ";
         }
     }
 
