@@ -1,7 +1,78 @@
 html{
     text-align: center;
+    background-color: burlywood; /*for browsers that don't support gradient*/
+    height: 100%;
+    background-image: linear-gradient(to right, burlywood , rgb(184, 162, 104));
+}
+
+.container{
+    display: grid;
+    height: 400px;
+    padding: 5px 5px; /*outer gap*/
+    grid-template-columns: repeat(4,1fr); /*4 cols of equal width*/
+    grid-template-rows: repeat(10, 1fr); /*10 equal rows/
+    
+    /*add space between cells*/
+    grid-gap: 5px 0px; /*short for grid-row-gap and grid-column-gap*/
+    /*1st num for row, 2nd num for column*/
+    /*if they're the same, can use only 1 num*/
+}
+
+header{
+    font-weight: bold;
+    font-size: 50px;
+    margin-top: 50px;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+
+.input {
+    width: 100%;
+    font-size: 3rem;
+    height: 80px;
+    border: none;
+    border-radius: 11px;
+    background-color: #6deea1;
+    color: rgb(0, 0, 0);
+    text-align: right;
+   
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+#submitBtn{
+    font-size: 2rem;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+#sayStr{
+    height: 100%;
+    grid-row-start: 4;
+    grid-row-end: 7;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    border: solid black 3px;
+}
+
+#speechNotSupportedTxt{
+    grid-row-start: 7;
+    grid-row-end: 9;
+    grid-column-start: 1;
+    grid-column-end: 5;
 }
 
 footer{
     text-align: right;
+    grid-row-start: 9;
+    grid-row-end: 10;
+    grid-column-start: 3;
+    grid-column-end: 5;
 }

@@ -155,6 +155,11 @@ submitBtn.addEventListener('click',function() {
     say(Number(input.value));
 });
 
+//Enter key will click the submitBtn
+window.addEventListener('keydown',function(e){
+    if(e.key === "Enter"){ submitBtn.click();}
+});
+
 const speechNotSupportedTxt = document.querySelector('#speechNotSupportedTxt');
 
 function checkSynth(){
