@@ -49,20 +49,11 @@ function say(num){
     let teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
     
     let left = num;
-    let write = Math.floor(left / 1000000000000000);
-    left = left - write*1000000000000000;
 
-    if(write>0){
-        let quadrillions = say(write);
-        resultStr = resultStr + quadrillions + " quadrillion";
-
-        if(left>0){
-            resultStr = resultStr + " ";
-        }
-    }
-
-    write = Math.floor(left / 1000000000000);
+    let write = Math.floor(left / 1000000000000);
     left = left - write*1000000000000;
+    console.log("tril" + write);
+    console.log("tril" + left);
 
     if(write>0){
         let trillions = say(write);
@@ -75,6 +66,8 @@ function say(num){
 
     write = Math.floor(left / 1000000000);
     left = left - write*1000000000;
+    console.log("bil" + write);
+    console.log("bil" + left);
 
     if(write>0){
         let billions = say(write);
@@ -87,6 +80,8 @@ function say(num){
 
     write = Math.floor(left / 1000000);
     left = left - write*1000000;
+    console.log("mil" + write);
+    console.log("mil" + left);
 
     if(write>0){
         let millions = say(write);
@@ -99,6 +94,8 @@ function say(num){
 
     write = Math.floor(left / 1000);
     left = left - write*1000;
+    console.log("thousands" + write);
+    console.log("thousands" + left);
 
     if(write>0){
         let thousands = say(write);
@@ -111,6 +108,8 @@ function say(num){
 
     write = Math.floor(left / 100);
     left = left - write*100;
+    console.log("hundreds" + write);
+    console.log("hundreds" + left);
 
     if(write>0){
         let hundreds = say(write);
@@ -123,6 +122,8 @@ function say(num){
 
     write = Math.floor(left/10);
     left = left - write*10;
+    console.log("tens" + write);
+    console.log("tens" + left);
 
     if(write>0){
         if(write===1 && left>0){
@@ -139,6 +140,8 @@ function say(num){
     }
 
     write = Math.floor(left);
+    console.log("ones" + write);
+    console.log("ones" + left);
     left = 0;
     
     if(write>0){
@@ -184,6 +187,6 @@ function checkSynth(){
     }
 }
 
-window.onload = checkSynth;
+//window.onload = checkSynth;
 
 
