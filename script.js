@@ -187,6 +187,6 @@ function checkSynth(){
     }
 }
 
-//window.onload = checkSynth;
+window.onload = checkSynth;
 
 
