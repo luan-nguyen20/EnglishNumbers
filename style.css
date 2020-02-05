@@ -1,8 +1,8 @@
 html{
     text-align: center;
-    background-color: burlywood; /*for browsers that don't support gradient*/
+    background-color: rgb(255, 255, 99); /*for browsers that don't support gradient*/
     height: 100%;
-    background-image: linear-gradient(to right, burlywood , rgb(184, 162, 104));
+    width: 100%;
 }
 
 .container{
@@ -64,6 +64,7 @@ header{
     align-self: stretch;
     justify-self: stretch;
     font-size: 4vw;
+    border: solid black 3px;
 }
 
 #speechNotSupportedTxt{
