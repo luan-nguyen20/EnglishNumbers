@@ -46,7 +46,7 @@ function say(num){
 
     let onesPlace = ['one','two','three','four','five','six','seven','eight','nine'];
     let tensPlace = ['ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-    let teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seveteen','eighteen','nineteen'];
+    let teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
     
     let left = num;
     let write = Math.floor(left / 1000000000000000);
@@ -154,5 +154,31 @@ const submitBtn = document.querySelector("#submitBtn")
 submitBtn.addEventListener('click',function() {
     say(Number(input.value));
 });
+
+const speechNotSupportedTxt = document.querySelector('#speechNotSupportedTxt');
+
+function checkSynth(){
+    if('speechSynthesis' in window){
+        let synth = speechSynthesis;
+        var flag = false;
+
+        submitBtn.addEventListener('click',play);
+
+        function play(){
+            if(!flag){ 
+                flag = true; //so if the button is clicked later, the code inside the first if won’t execute
+                let utterance = new SpeechSynthesisUtterance(sayStr.textContent);
+                utterance.voice = synth.getVoices()[3];
+                utterance.onend = function(){ flag = false;}
+                synth.speak(utterance);
+            } 
+        }
+    }
+    else{
+        speechNotSupportedTxt.textContent = 'Speech not supported. Please try a different browser.';
+    }
+}
+
+window.onload = checkSynth;
 
 
