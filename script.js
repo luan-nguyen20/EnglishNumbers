@@ -49,7 +49,19 @@ function say(num){
     let teens = ['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seveteen','eighteen','nineteen'];
     
     let left = num;
-    let write = Math.floor(left / 1000000000000);
+    let write = Math.floor(left / 1000000000000000);
+    left = left - write*1000000000000000;
+
+    if(write>0){
+        let quadrillions = say(write);
+        resultStr = resultStr + quadrillions + " quadrillion";
+
+        if(left>0){
+            resultStr = resultStr + " ";
+        }
+    }
+
+    write = Math.floor(left / 1000000000000);
     left = left - write*1000000000000;
 
     if(write>0){
