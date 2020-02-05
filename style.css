@@ -7,6 +7,7 @@ html{
 
 .container{
     display: grid;
+    align-items: center;
     width:100vw;
     height: 100vh;
     padding: 5px 5px; /*outer gap*/
@@ -60,7 +61,9 @@ header{
     grid-row-end: 7;
     grid-column-start: 1;
     grid-column-end: 5;
-    border: solid black 3px;
+    align-self: stretch;
+    justify-self: stretch;
+    font-size: 4vw;
 }
 
 #speechNotSupportedTxt{
