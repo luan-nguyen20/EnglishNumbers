@@ -64,7 +64,6 @@ header{
     align-self: stretch;
     justify-self: stretch;
     font-size: 4vw;
-    border: solid black 3px;
 }
 
 #speechNotSupportedTxt{
