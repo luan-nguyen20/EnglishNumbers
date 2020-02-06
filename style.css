@@ -32,7 +32,7 @@ header{
 
 
 .input {
-    width: 100%;
+    width: 90%;
     font-size: 3rem;
     height: 80px;
     border: none;
@@ -40,6 +40,7 @@ header{
     background-color: #6deea1;
     color: rgb(0, 0, 0);
     text-align: center;
+    justify-self: center;
    
     grid-row-start: 2;
     grid-row-end: 3;
@@ -62,7 +63,7 @@ header{
     grid-column-start: 1;
     grid-column-end: 5;
     align-self: stretch;
-    justify-self: stretch;
+    justify-self: center;
     font-size: 4vw;
 }
 
@@ -71,6 +72,10 @@ header{
     grid-row-end: 9;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+
+#speechNotSupportedTxt:empty{
+    display: none;
 }
 
 footer{
